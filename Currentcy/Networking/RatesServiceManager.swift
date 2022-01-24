@@ -10,13 +10,12 @@ struct RatesServiceManager: RatesService {
     
     func loadRates(completion: @escaping (Result<[Rate], Error>) -> Void) {
         /// set api.urlBuilder components for this call first
-        
+//        api.urlBuilder.scheme = "http"
     }
 }
 
 
-struct RatesServiceManagerMock: RatesService {
-    
+struct RatesServiceManagerMock: RatesService {    
     func loadRates(completion: @escaping (Result<[Rate], Error>) -> Void) {
         completion(Result.success([Rate(code: "USD", value: 200),
                                    Rate(code: "COP", value: 1000),

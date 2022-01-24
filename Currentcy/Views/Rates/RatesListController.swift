@@ -56,7 +56,7 @@ class RatesListController: UITableViewController {
     }
     
     private func show(_ rate: Rate) {
-        let vc = RateDetailViewController(rate: rate)
+        let vc = RateDetailViewController(viewModel: RateDetailViewModel(rate: rate))
         navigationController?.pushViewController(vc, animated: true)
     }
 }

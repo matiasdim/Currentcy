@@ -38,6 +38,9 @@
 		1363D384279F1567002C73E4 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363D383279F1567002C73E4 /* URLBuilder.swift */; };
 		1363D385279F1E17002C73E4 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363D383279F1567002C73E4 /* URLBuilder.swift */; };
 		1363D388279F1E87002C73E4 /* URLBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363D387279F1E87002C73E4 /* URLBuilderTests.swift */; };
+		1363D38A279F386E002C73E4 /* RatesDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363D389279F386E002C73E4 /* RatesDetailViewModelTests.swift */; };
+		1363D38C279F3D5F002C73E4 /* RatesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363D38B279F3D5F002C73E4 /* RatesDetailViewModel.swift */; };
+		1363D38D279F3D73002C73E4 /* RatesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363D38B279F3D5F002C73E4 /* RatesDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,8 @@
 		1363D381279F09F5002C73E4 /* RatesServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesServiceDummy.swift; sourceTree = "<group>"; };
 		1363D383279F1567002C73E4 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		1363D387279F1E87002C73E4 /* URLBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilderTests.swift; sourceTree = "<group>"; };
+		1363D389279F386E002C73E4 /* RatesDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesDetailViewModelTests.swift; sourceTree = "<group>"; };
+		1363D38B279F3D5F002C73E4 /* RatesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +154,7 @@
 		1363D353279F0593002C73E4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				1363D354279F0593002C73E4 /* RatesListViewModel.swift */,
+				1363D38E279F3DB3002C73E4 /* Rates */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -157,8 +162,7 @@
 		1363D355279F0593002C73E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1363D356279F0593002C73E4 /* RatesListController.swift */,
-				1363D357279F0593002C73E4 /* RateDetailViewController.swift */,
+				1363D38F279F3DC2002C73E4 /* Rates */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +214,7 @@
 			children = (
 				1363D36A279F05BF002C73E4 /* RatesListTests.swift */,
 				1363D369279F05BF002C73E4 /* RatesListViewModelTests.swift */,
+				1363D389279F386E002C73E4 /* RatesDetailViewModelTests.swift */,
 			);
 			path = Rates;
 			sourceTree = "<group>";
@@ -237,6 +242,24 @@
 				1363D387279F1E87002C73E4 /* URLBuilderTests.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		1363D38E279F3DB3002C73E4 /* Rates */ = {
+			isa = PBXGroup;
+			children = (
+				1363D354279F0593002C73E4 /* RatesListViewModel.swift */,
+				1363D38B279F3D5F002C73E4 /* RatesDetailViewModel.swift */,
+			);
+			path = Rates;
+			sourceTree = "<group>";
+		};
+		1363D38F279F3DC2002C73E4 /* Rates */ = {
+			isa = PBXGroup;
+			children = (
+				1363D356279F0593002C73E4 /* RatesListController.swift */,
+				1363D357279F0593002C73E4 /* RateDetailViewController.swift */,
+			);
+			path = Rates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +368,7 @@
 				1363D384279F1567002C73E4 /* URLBuilder.swift in Sources */,
 				1317482D2799A28F00D98B75 /* AppDelegate.swift in Sources */,
 				1363D364279F0593002C73E4 /* ErrorManager.swift in Sources */,
+				1363D38C279F3D5F002C73E4 /* RatesDetailViewModel.swift in Sources */,
 				1363D368279F0593002C73E4 /* UIViewController+Extensions.swift in Sources */,
 				1363D361279F0593002C73E4 /* RatesListViewModel.swift in Sources */,
 				1363D362279F0593002C73E4 /* RatesListController.swift in Sources */,
@@ -368,12 +392,14 @@
 				1363D36B279F05BF002C73E4 /* RatesListViewModelTests.swift in Sources */,
 				1363D370279F05FA002C73E4 /* RatesService.swift in Sources */,
 				1363D36C279F05BF002C73E4 /* RatesListTests.swift in Sources */,
+				1363D38A279F386E002C73E4 /* RatesDetailViewModelTests.swift in Sources */,
 				1363D375279F0623002C73E4 /* Rate.swift in Sources */,
 				1363D37C279F0962002C73E4 /* UIViewControllerExtensionTests.swift in Sources */,
 				1363D372279F0607002C73E4 /* UIViewController+Extensions.swift in Sources */,
 				1363D382279F09F5002C73E4 /* RatesServiceDummy.swift in Sources */,
 				1363D371279F0600002C73E4 /* ErrorManager.swift in Sources */,
 				1363D378279F062B002C73E4 /* RateDetailViewController.swift in Sources */,
+				1363D38D279F3D73002C73E4 /* RatesDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
