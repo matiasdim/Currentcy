@@ -45,6 +45,7 @@
 		13756F4827A0615B00F30019 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13756F4427A0614D00F30019 /* Localizable.strings */; };
 		13756F5427A06D6A00F30019 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13756F5327A06D6A00F30019 /* AppLocalization.swift */; };
 		13756F5527A07FA400F30019 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13756F5327A06D6A00F30019 /* AppLocalization.swift */; };
+		13756F5727A0843000F30019 /* AppTheming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13756F5627A0843000F30019 /* AppTheming.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		13756F4527A0614D00F30019 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		13756F4727A0615100F30019 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		13756F5327A06D6A00F30019 /* AppLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
+		13756F5627A0843000F30019 /* AppTheming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheming.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				1363D359279F0593002C73E4 /* ErrorManager.swift */,
 				13756F5327A06D6A00F30019 /* AppLocalization.swift */,
+				13756F5627A0843000F30019 /* AppTheming.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				13756F5427A06D6A00F30019 /* AppLocalization.swift in Sources */,
 				1317482D2799A28F00D98B75 /* AppDelegate.swift in Sources */,
 				1363D364279F0593002C73E4 /* ErrorManager.swift in Sources */,
+				13756F5727A0843000F30019 /* AppTheming.swift in Sources */,
 				1363D38C279F3D5F002C73E4 /* RatesDetailViewModel.swift in Sources */,
 				1363D368279F0593002C73E4 /* UIViewController+Extensions.swift in Sources */,
 				1363D361279F0593002C73E4 /* RatesListViewModel.swift in Sources */,
