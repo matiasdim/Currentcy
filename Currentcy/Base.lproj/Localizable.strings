@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Currentcy
+
+  Created by Matías  Gil Echavarría on 25/01/22.
+  
+*/
+
+/**************************** Rates List ****************************/
+"ratesList.title" = "Rates";
+
+/**************************** Rates Detail ****************************/

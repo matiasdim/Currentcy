@@ -7,20 +7,6 @@
 
 import XCTest
 
-//struct RateDetailViewModel {
-//    var rate: Rate
-//
-//    var title: String {
-//        return rate.code
-//    }
-//
-//    var : String {
-//        return String(rate.value)
-//    }
-//}
-
-
-
 class RatesListViewModelTests: XCTestCase {
     
     func testInit() {
@@ -29,6 +15,15 @@ class RatesListViewModelTests: XCTestCase {
                 
         XCTAssertNotNil(sut.rates)
         XCTAssertNotNil(sut.service)
+    }
+    
+    func testRatesAttribute() {
+        let service = RatesServiceDummy()
+        let sut = RateListViewModel(rates: [Rate(code: "EUR", value: 200)], service: service)
+        
+        XCTAssertEqual(sut.rates.count, 1)
+        XCTAssertEqual(sut.rates.first?.code, "EUR")
+        XCTAssertEqual(sut.rates.first?.value, 200)
     }
     
     func testNumbersOfRows() {

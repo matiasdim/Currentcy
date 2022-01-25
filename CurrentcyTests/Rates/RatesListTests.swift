@@ -83,7 +83,7 @@ class RatesList: XCTestCase {
         
         let detail = navigation.topViewController as? RateDetailViewController
         
-        XCTAssertEqual(detail?.rate, rate)
+        XCTAssertEqual(detail?.viewModel.rate, rate)
     }
     
     func testNumbersOfRowsInSection() {
@@ -149,7 +149,7 @@ private extension RatesListController {
     }
     
     func show(_ rate: Rate) {
-        let vc = RateDetailViewController(rate: rate)
+        let vc = RateDetailViewController(viewModel: RateDetailViewModel(rate: Rate(code: "EUR", value: 200)))
         navigationController?.pushViewController(vc, animated: true)
     }
     

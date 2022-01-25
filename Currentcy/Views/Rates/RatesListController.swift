@@ -17,7 +17,7 @@ class RatesListController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        title = "Rates"
+        title = AppLocalization.RatesListKey.title.localizedString
         
         viewModel.reloadTable = { [weak self] in
             self?.tableView.reloadData()
@@ -50,7 +50,7 @@ class RatesListController: UITableViewController {
         
         return cell
     }
-    
+     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         show(viewModel.rates[indexPath.row])
     }
