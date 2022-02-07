@@ -17,7 +17,7 @@ class RatesList: XCTestCase {
         let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service))
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual("Rates", sut.title)
+        XCTAssertEqual(AppLocalization.RatesListKey.title.localizedString, sut.title)
     }
     
     func testSetViewModelFunctionsOnLoad() {
@@ -94,6 +94,43 @@ class RatesList: XCTestCase {
         XCTAssertEqual(sut.numberOfRowsInSection(), 1)
     }
     
+    func testSearchControlPlaceholderTitle() {
+        let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        
+        sut.simulateWillAppear()
+        
+        let placeHolder = sut.navigationItem.searchController?.searchBar.placeholder
+        
+        XCTAssertEqual(placeHolder, AppLocalization.RatesListKey.searchBarTitle.localizedString)
+    }
+    
+    func testSearchControllerIsPresented() {
+        let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        
+        sut.simulateWillAppear()
+                
+        sut.presentSearchController()
+        
+        XCTAssertEqual(sut.searchControllerPresented, true)
+    }
+    
+    
+    func testSearchControlCallsDelegteWhenTextChanges() {
+        let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        
+        sut.simulateWillAppear()
+        
+        XCTAssertEqual(false, sut.textDidChangeCalled)
+        
+        sut.searchBarTextChange()
+        
+        XCTAssertEqual(true, sut.textDidChangeCalled)
+        
+    }
+    
 }
 
 // MARK: - Test utilities
@@ -106,6 +143,13 @@ private class NonAnimatedUINavigationController: UINavigationController {
 
 private class TestableRatesListController: RatesListController {
     var presentedVC: UIViewController?
+    var searchControllerPresented = false
+    var searchResultCalled = false
+    var textDidChangeCalled = false
+    
+    override func updateSearchResults(for searchController: UISearchController) {
+        searchResultCalled = true
+    }
 
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         presentedVC = viewControllerToPresent
@@ -114,6 +158,22 @@ private class TestableRatesListController: RatesListController {
     func errorMessage() -> String? {
         let alert = presentedVC as? UIAlertController
         return alert?.message
+    }
+    
+    func presentSearchController() {
+        searchController?.isActive = true
+    }
+    
+    func searchBarTextChange() {
+        searchBar(searchController!.searchBar, textDidChange: "aaa")
+    }
+    
+    func presentSearchController(_ searchController: UISearchController) {
+        searchControllerPresented = true
+    }
+
+    override func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        textDidChangeCalled = true
     }
 }
 
@@ -160,6 +220,6 @@ private extension RatesListController {
     private func rateCell(at row: Int) -> UITableViewCell? {
         return tableView.dataSource?.tableView(tableView, cellForRowAt: IndexPath(row: row, section: 0))
     }
-}
 
+}
 

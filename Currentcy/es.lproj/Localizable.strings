@@ -8,5 +8,5 @@
 
 /**************************** RatesList ****************************/
 "ratesList.title" = "Tazas de cambio";
-
+"ratesList.searchBarTitle" = "Busca moneda";
 /**************************** RatesDetail ****************************/

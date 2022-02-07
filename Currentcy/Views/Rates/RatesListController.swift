@@ -10,6 +10,7 @@ import UIKit
 class RatesListController: UITableViewController {
     
     var viewModel: RateListViewModel
+    var searchController: UISearchController?
     
     init(viewModel: RateListViewModel) {
         self.viewModel = viewModel
@@ -18,6 +19,20 @@ class RatesListController: UITableViewController {
     
     override func viewDidLoad() {
         title = AppLocalization.RatesListKey.title.localizedString
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.delegate = self
+        searchController?.searchBar.delegate = self
+        // 1
+        searchController?.searchResultsUpdater = self
+        // 2
+        searchController?.obscuresBackgroundDuringPresentation = false
+        // 3
+        searchController?.searchBar.placeholder = AppLocalization.RatesListKey.searchBarTitle.localizedString
+        // 4
+        navigationItem.searchController = searchController
+        // 5
+        definesPresentationContext = true
         
         viewModel.reloadTable = { [weak self] in
             self?.tableView.reloadData()
@@ -58,5 +73,17 @@ class RatesListController: UITableViewController {
     private func show(_ rate: Rate) {
         let vc = RateDetailViewController(viewModel: RateDetailViewModel(rate: rate))
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension RatesListController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // TODO
+    }
+}
+
+extension RatesListController: UISearchBarDelegate, UISearchControllerDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        /// Implement
     }
 }

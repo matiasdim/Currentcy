@@ -8,5 +8,5 @@
 
 /**************************** Rates List ****************************/
 "ratesList.title" = "Rates";
-
+"ratesList.searchBarTitle" = "Search rates";
 /**************************** Rates Detail ****************************/
