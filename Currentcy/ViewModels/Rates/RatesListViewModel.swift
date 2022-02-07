@@ -47,3 +47,18 @@ class RateListViewModel {
         return RateDetailViewModel(rate: rates[index])
     }
 }
+
+/// Adapter to avoid coupling higher level module (The Rates API) to a lower level component (RatesListViewModel throught RatesService implementation)
+class RatesAPIRateListViewModelAdapter: RatesService {
+    let api: RatesAPI
+    
+    init(api: RatesAPI) {
+        self.api = api
+    }
+    
+    func loadRates(completion: @escaping (Result<[Rate], Error>) -> Void) {
+        api.fetchAllRates { result in
+            completion(result)
+        }
+    }
+}

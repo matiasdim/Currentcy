@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: RatesListController(viewModel: RateListViewModel(rates: [], service: RatesServiceManagerMock())))
+        window.rootViewController = UINavigationController(rootViewController: makeRootController())
         window.makeKeyAndVisible()
         self.window = window
     }
@@ -52,6 +52,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    /// Configure here the desired initial view controller
+    private func makeRootController() -> UIViewController {
+        let apiManager = ApiManager(session: URLSession(configuration: .default),
+                                    urlBuilder: URLBuilder(builder: URLComponents(),
+                                                           scheme: nil,
+                                                           host: nil,
+                                                           port: nil,
+                                                           path: nil,
+                                                           query: nil))
+        
+        let ratesAPI = RatesAPIMock(APIManager: apiManager)
+                                    
+        return RatesListController(viewModel: RateListViewModel(rates: [],
+                                                                service: RatesAPIRateListViewModelAdapter(api: ratesAPI)))
+    }
 
 }
 

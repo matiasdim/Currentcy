@@ -55,7 +55,7 @@ class RatesList: XCTestCase {
     func testViewWillAppearSuccessfulAPIResponseShowRates() {
         let rate1 = Rate(code: "USD", value: 2101.02)
         let rate2 = Rate(code: "COP", value: 102)
-        let service = RatesServiceSpy(result: .success([rate1, rate2]))
+        let service = RatesServiceSpy(result: .success([rate1 ,rate2]))
         let sut = RatesListController(viewModel: RateListViewModel(rates: [rate1, rate2], service: service))
         
         sut.simulateWillAppear()
