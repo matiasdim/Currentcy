@@ -19,9 +19,9 @@ class UIViewControllerExtensionTests: XCTestCase {
 
         sut.showError(DefaultError(errorDescription: errorDescription))
 
-        XCTAssertEqual(sut.errorTitle(), "Error")
+        XCTAssertEqual(sut.errorTitle(), AppLocalization.GenericKeys.errorAlertTitle.localizedString)
         XCTAssertEqual(sut.errorMessage(), errorDescription)
-        XCTAssertEqual(sut.errorCancelButtonTitle(), "OK")
+        XCTAssertEqual(sut.errorCancelButtonTitle(), AppLocalization.GenericKeys.OkAlertButton.localizedString)
     }
 
 }

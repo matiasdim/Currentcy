@@ -8,15 +8,29 @@
 import Foundation
 
 struct AppLocalization {
-        
-        enum RatesListKey: String {
-            /// Rates list title
-            case title = "ratesList.title"
-            case searchBarTitle = "ratesList.searchBarTitle"
-            
-            var localizedString: String {
-                return NSLocalizedString(self.rawValue, comment: "")
-            }
-        }
     
+    enum GenericKeys: String {
+        case errorAlertTitle = "generic.alert.error.title"
+        
+        case OkAlertButton = "generic.alert.button.ok.title"
+        
+        var localizedString: String {
+            return AppLocalization.localize(key: self.rawValue)
+        }
+    }
+    
+    enum RatesListKeys: String {
+        /// Rates list title
+        case title = "ratesList.title"
+        case searchBarTitle = "ratesList.searchBarTitle"
+        
+        var localizedString: String {
+            return AppLocalization.localize(key: self.rawValue)
+        }
+    }
+    
+    fileprivate static func localize(key: String) -> String {
+        return NSLocalizedString(key, comment: "")
+    }
+
 }

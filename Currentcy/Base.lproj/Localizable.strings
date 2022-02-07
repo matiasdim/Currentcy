@@ -6,6 +6,9 @@
   
 */
 
+/**************************** Generic ****************************/
+"generic.alert.error.title" = "Error";
+"generic.alert.button.ok.title" = "OK";
 /**************************** Rates List ****************************/
 "ratesList.title" = "Rates";
 "ratesList.searchBarTitle" = "Search rates";

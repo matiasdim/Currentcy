@@ -12,26 +12,23 @@ class RatesListController: UITableViewController {
     var viewModel: RateListViewModel
     var searchController: UISearchController?
     
+    let reuseIdentifier = "reuseIdentifier"
+    
     init(viewModel: RateListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
     override func viewDidLoad() {
-        title = AppLocalization.RatesListKey.title.localizedString
+        title = AppLocalization.RatesListKeys.title.localizedString
         
         searchController = UISearchController(searchResultsController: nil)
         searchController?.delegate = self
         searchController?.searchBar.delegate = self
-        // 1
         searchController?.searchResultsUpdater = self
-        // 2
         searchController?.obscuresBackgroundDuringPresentation = false
-        // 3
-        searchController?.searchBar.placeholder = AppLocalization.RatesListKey.searchBarTitle.localizedString
-        // 4
+        searchController?.searchBar.placeholder = AppLocalization.RatesListKeys.searchBarTitle.localizedString
         navigationItem.searchController = searchController
-        // 5
         definesPresentationContext = true
         
         viewModel.reloadTable = { [weak self] in
@@ -53,25 +50,26 @@ class RatesListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.rates.count
+        return viewModel.numbersOfRows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "reuseIdentifier")
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        cell.accessoryType = .disclosureIndicator
         
-        let rate = viewModel.rates[indexPath.row]
-        cell.textLabel?.text = rate.code
-        cell.detailTextLabel?.text = "\(rate.value)"
+        let rateDetail = viewModel.rate(at: indexPath.row)
+        cell.textLabel?.text = rateDetail.code
+        cell.detailTextLabel?.text = "\(rateDetail.value)"
         
         return cell
     }
      
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        show(viewModel.rates[indexPath.row])
+        show(viewModel.rate(at: indexPath.row))
     }
     
-    private func show(_ rate: Rate) {
-        let vc = RateDetailViewController(viewModel: RateDetailViewModel(rate: rate))
+    private func show(_ rateDetail: RateDetailViewModel) {
+        let vc = RateDetailViewController(viewModel: rateDetail)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -43,4 +43,7 @@ class RateListViewModel {
         }
     }
     
+    func rate(at index: Int) -> RateDetailViewModel {
+        return RateDetailViewModel(rate: rates[index])
+    }
 }

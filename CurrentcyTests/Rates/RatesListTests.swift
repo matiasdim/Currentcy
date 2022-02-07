@@ -17,7 +17,7 @@ class RatesList: XCTestCase {
         let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service))
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual(AppLocalization.RatesListKey.title.localizedString, sut.title)
+        XCTAssertEqual(AppLocalization.RatesListKeys.title.localizedString, sut.title)
     }
     
     func testSetViewModelFunctionsOnLoad() {
@@ -102,7 +102,7 @@ class RatesList: XCTestCase {
         
         let placeHolder = sut.navigationItem.searchController?.searchBar.placeholder
         
-        XCTAssertEqual(placeHolder, AppLocalization.RatesListKey.searchBarTitle.localizedString)
+        XCTAssertEqual(placeHolder, AppLocalization.RatesListKeys.searchBarTitle.localizedString)
     }
     
     func testSearchControllerIsPresented() {
