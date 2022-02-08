@@ -6,7 +6,7 @@
 //
 
 class RatesServiceDummy: RatesService {
-    func loadRates(completion: @escaping (Result<[Rate], Error>) -> Void) {
+    func loadRates(baseRate: String, completion: @escaping (Result<[Rate], Error>) -> Void) {
         // do nothing
     }
 }

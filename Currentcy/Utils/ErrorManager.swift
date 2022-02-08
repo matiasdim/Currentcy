@@ -8,5 +8,9 @@
 import UIKit
 
 struct DefaultError: LocalizedError {
-    var errorDescription: String?
+    var errorDescription: String? = "Error, inténtelo de nuevo más tarde"
+}
+
+struct URLError: LocalizedError {
+    var errorDescription: String? = "Error en la URL"
 }

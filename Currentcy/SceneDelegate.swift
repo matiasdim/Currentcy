@@ -54,15 +54,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     /// Configure here the desired initial view controller
     private func makeRootController() -> UIViewController {
-        let apiManager = ApiManager(session: URLSession(configuration: .default),
-                                    urlBuilder: URLBuilder(builder: URLComponents(),
-                                                           scheme: nil,
-                                                           host: nil,
-                                                           port: nil,
-                                                           path: nil,
-                                                           query: nil))
+        let apiManager = ApiManager(session: URLSession(configuration: .default))
         
-        let ratesAPI = RatesAPIMock(APIManager: apiManager)
+        let ratesAPI = RatesAPI(APIManager: apiManager) ///RatesAPIMock(APIManager: apiManager)
                                     
         return RatesListController(viewModel: RateListViewModel(rates: [],
                                                                 service: RatesAPIRateListViewModelAdapter(api: ratesAPI)))

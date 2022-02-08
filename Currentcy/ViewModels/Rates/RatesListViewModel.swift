@@ -33,7 +33,7 @@ class RateListViewModel {
     var showError: ((_ error: Error) -> Void)?
     
     func loadRates() {
-        service.loadRates { [weak self] result in
+        service.loadRates(baseRate: "USD") { [weak self] result in
             switch result {
                 case .success(let rates):
                     self?.rates = rates
@@ -56,8 +56,8 @@ class RatesAPIRateListViewModelAdapter: RatesService {
         self.api = api
     }
     
-    func loadRates(completion: @escaping (Result<[Rate], Error>) -> Void) {
-        api.fetchAllRates { result in
+    func loadRates(baseRate: String,completion: @escaping (Result<[Rate], Error>) -> Void) {
+        api.fetchAllRates(baseRate: baseRate) { result in
             completion(result)
         }
     }

@@ -14,7 +14,7 @@ class RatesServiceSpy: RatesService {
         self.result = result
     }
     
-    func loadRates(completion: @escaping (Result<[Rate], Error>) -> Void) {
+    func loadRates(baseRate: String, completion: @escaping (Result<[Rate], Error>) -> Void) {
         loadRatesCount += 1
         completion(result)
     }

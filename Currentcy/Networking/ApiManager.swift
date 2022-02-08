@@ -9,16 +9,23 @@ import Foundation
 struct ApiManager: NetworkManager {
     
     let session: URLSession
-    let urlBuilder: URLBuilder/// = "http://api.exchangeratesapi.io/v1/latest?access_key=f1e8ee7c155b9e93a7ec3a3d9aba4a5d&base=USD"
+    var urlBuilder: URLBuilder? = nil
     
     func fetchAll(completion: @escaping (Result<Any, Error>) -> ()) {
-        guard let url = urlBuilder.url else {
-            print("")
+        guard let url = urlBuilder?.url else {
+            completion(.failure(URLError()))
             return
         }
         
-        session.dataTask(with: url) { Data, URLResponse, error in
-            print("")
+        session.dataTask(with: url) { data, response, error in
+            if let data = data {
+                completion(.success(data))
+            }
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.failure(DefaultError()))
+            }
         }.resume()
         
         
