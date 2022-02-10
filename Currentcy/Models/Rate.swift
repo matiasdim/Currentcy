@@ -11,5 +11,5 @@ struct Rate: Codable, Equatable {
 }
 
 struct RatesResponse: Codable {
-    let rates: [Rate]
+    let data: [String: Double]
 }

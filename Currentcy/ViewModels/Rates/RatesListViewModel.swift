@@ -5,6 +5,8 @@
 //  Created by Matías  Gil Echavarría on 18/01/22.
 //
 
+import Foundation
+
 class RateListViewModel {
     
     init(rates: [Rate] = [], service: RatesService) {
@@ -58,7 +60,9 @@ class RatesAPIRateListViewModelAdapter: RatesService {
     
     func loadRates(baseRate: String,completion: @escaping (Result<[Rate], Error>) -> Void) {
         api.fetchAllRates(baseRate: baseRate) { result in
-            completion(result)
+            DispatchQueue.main.async {
+                completion(result)
+            }
         }
     }
 }

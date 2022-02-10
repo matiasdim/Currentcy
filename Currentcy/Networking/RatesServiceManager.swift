@@ -35,7 +35,12 @@ class RatesAPI {
                     if let data = data as? Data {
                         do {
                             let response = try JSONDecoder().decode(RatesResponse.self, from: data)
-                            completion(.success(response.rates))
+                            var rates = [Rate]()
+                            let ratesDictionary = response.data
+                            ratesDictionary.keys.forEach { key in
+                                rates.append(Rate(code: key, value: ratesDictionary[key]!))
+                            }
+                            completion(.success(rates))
                         } catch {
                             completion(.failure(error))
                         }
