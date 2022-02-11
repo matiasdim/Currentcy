@@ -38,7 +38,8 @@ class RateListViewModel {
         service.loadRates(baseRate: "USD") { [weak self] result in
             switch result {
                 case .success(let rates):
-                    self?.rates = rates
+                    let sortedRates = rates.sorted(by: { $0.code < $1.code })
+                    self?.rates = sortedRates
                 case .failure(let error):
                     self?.showError?(error)
             }

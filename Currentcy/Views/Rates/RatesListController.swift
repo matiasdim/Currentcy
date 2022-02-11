@@ -11,6 +11,7 @@ class RatesListController: UITableViewController {
     
     var viewModel: RateListViewModel
     var searchController: UISearchController?
+    var activityIndicator: UIActivityIndicatorView?
     
     let reuseIdentifier = "reuseIdentifier"
     
@@ -20,6 +21,8 @@ class RatesListController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        
+        activityIndicator = UIActivityIndicatorView(style: .large)
         title = AppLocalization.RatesListKeys.title.localizedString
         
         searchController = UISearchController(searchResultsController: nil)
@@ -28,16 +31,11 @@ class RatesListController: UITableViewController {
         searchController?.searchResultsUpdater = self
         searchController?.obscuresBackgroundDuringPresentation = false
         searchController?.searchBar.placeholder = AppLocalization.RatesListKeys.searchBarTitle.localizedString
+        
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        viewModel.reloadTable = { [weak self] in
-            self?.tableView.reloadData()
-        }
-        
-        viewModel.showError = { [weak self] error in
-            self?.showError(error)
-        }
+        setViewModelActions()
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +44,8 @@ class RatesListController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard let activityIndicator = activityIndicator else { return }
+        show(activityIndicator: activityIndicator)
         viewModel.loadRates()
     }
     
@@ -72,6 +72,19 @@ class RatesListController: UITableViewController {
         let vc = RateDetailViewController(viewModel: rateDetail)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func setViewModelActions() {
+        viewModel.reloadTable = { [weak self] in
+            self?.tableView.reloadData()
+            guard let activityIndicator = self?.activityIndicator else { return }
+            self?.hide(activityIndicator: activityIndicator)
+        }
+        
+        viewModel.showError = { [weak self] error in
+            self?.showError(error)
+        }
+    }
+    
 }
 
 extension RatesListController: UISearchResultsUpdating {

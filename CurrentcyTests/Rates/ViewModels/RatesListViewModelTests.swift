@@ -87,7 +87,7 @@ private class TestableRatesListController: RatesListController {
         viewModel.reloadTable = { [weak self] in
             self?.tableRelodCalled = true
         }
-        
+
         viewModel.showError = { [weak self] _ in
             self?.showErrorCalled = true
         }

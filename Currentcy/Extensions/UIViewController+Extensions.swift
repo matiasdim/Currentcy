@@ -18,4 +18,17 @@ extension UIViewController {
         
         present(alert, animated: false)
     }
+    
+    func show(activityIndicator: UIActivityIndicatorView) {
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+        view.isUserInteractionEnabled = false
+        activityIndicator.startAnimating()
+    }
+    
+    func hide(activityIndicator: UIActivityIndicatorView){
+        activityIndicator.stopAnimating()
+        view.isUserInteractionEnabled = true
+        activityIndicator.removeFromSuperview()
+    }
 }
