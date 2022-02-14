@@ -54,6 +54,10 @@
 		13B89C5727BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5627BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift */; };
 		13B89C5A27BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5927BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift */; };
 		13B89C5B27BAA8AA00A5A28E /* RatesAPIRateListViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5627BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift */; };
+		13B89C5E27BABAD800A5A28E /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5C27BABAD800A5A28E /* RateTableViewCell.swift */; };
+		13B89C5F27BABAD800A5A28E /* RateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B89C5D27BABAD800A5A28E /* RateTableViewCell.xib */; };
+		13B89C6027BAC08600A5A28E /* RateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B89C5D27BABAD800A5A28E /* RateTableViewCell.xib */; };
+		13B89C6127BAC08A00A5A28E /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5C27BABAD800A5A28E /* RateTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +109,8 @@
 		13B89C5427BAA76300A5A28E /* RateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTests.swift; sourceTree = "<group>"; };
 		13B89C5627BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesAPIRateListViewModelAdapter.swift; sourceTree = "<group>"; };
 		13B89C5927BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesAPIRateListViewModelAdapterTests.swift; sourceTree = "<group>"; };
+		13B89C5C27BABAD800A5A28E /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewCell.swift; sourceTree = "<group>"; };
+		13B89C5D27BABAD800A5A28E /* RateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +296,8 @@
 			children = (
 				1363D356279F0593002C73E4 /* RatesListController.swift */,
 				1363D357279F0593002C73E4 /* RateDetailViewController.swift */,
+				13B89C5C27BABAD800A5A28E /* RateTableViewCell.swift */,
+				13B89C5D27BABAD800A5A28E /* RateTableViewCell.xib */,
 			);
 			path = Rates;
 			sourceTree = "<group>";
@@ -417,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				131748392799A29100D98B75 /* LaunchScreen.storyboard in Resources */,
+				13B89C5F27BABAD800A5A28E /* RateTableViewCell.xib in Resources */,
 				13756F4627A0614D00F30019 /* Localizable.strings in Resources */,
 				131748362799A29100D98B75 /* Assets.xcassets in Resources */,
 			);
@@ -427,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13756F4827A0615B00F30019 /* Localizable.strings in Resources */,
+				13B89C6027BAC08600A5A28E /* RateTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +450,7 @@
 				1363D365279F0593002C73E4 /* Rate.swift in Sources */,
 				1363D367279F0593002C73E4 /* ApiManager.swift in Sources */,
 				1363D366279F0593002C73E4 /* RatesServiceManager.swift in Sources */,
+				13B89C5E27BABAD800A5A28E /* RateTableViewCell.swift in Sources */,
 				1363D384279F1567002C73E4 /* URLBuilder.swift in Sources */,
 				13B89C5727BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift in Sources */,
 				13756F5427A06D6A00F30019 /* AppLocalization.swift in Sources */,
@@ -464,6 +475,7 @@
 				13B89C5227BAA4AF00A5A28E /* ApiManagerTests.swift in Sources */,
 				1363D380279F09CD002C73E4 /* RatesServiceSpy.swift in Sources */,
 				1363D376279F0626002C73E4 /* RatesListViewModel.swift in Sources */,
+				13B89C6127BAC08A00A5A28E /* RateTableViewCell.swift in Sources */,
 				1363D374279F0618002C73E4 /* ApiManager.swift in Sources */,
 				1363D373279F0610002C73E4 /* RatesServiceManager.swift in Sources */,
 				1363D377279F0629002C73E4 /* RatesListController.swift in Sources */,

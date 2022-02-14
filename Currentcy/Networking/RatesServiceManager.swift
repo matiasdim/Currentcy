@@ -15,6 +15,8 @@ class RatesAPI {
     let ratesAPIPort = 80
     let ratesAPIPath = "/api/v2/latest"
     var ratesAPIQuery = "apikey=1a7ff870-88e3-11ec-9880-db412896d8a5"
+    
+    /// Historical rates https://freecurrencyapi.net/api/v2/historical?apikey=1a7ff870-88e3-11ec-9880-db412896d8a5&base_currency=USD&date_from=2020-10-01&date_to=2022-02-14
 
     init(APIManager: ApiManager) {
         self.apiManager = APIManager
