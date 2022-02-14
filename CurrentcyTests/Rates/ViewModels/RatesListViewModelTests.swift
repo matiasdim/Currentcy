@@ -48,10 +48,11 @@ class RatesListViewModelTests: XCTestCase {
         let service = RatesServiceDummy()
         let viewModel = RateListViewModel(rates: [], service: service)
         let vc = TestableRatesListController(viewModel: viewModel)
+        let errorManager = ErrorManager()
         
         XCTAssertFalse(vc.showErrorCalled)
         vc.simulateDidLoad()
-        vc.viewModel.showError?(DefaultError(errorDescription: ""))
+        vc.viewModel.showError?(errorManager.defaultError)
         
         XCTAssertTrue(vc.showErrorCalled)
     }

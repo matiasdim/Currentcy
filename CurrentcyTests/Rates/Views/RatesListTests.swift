@@ -64,6 +64,7 @@ class RatesList: XCTestCase {
     }
     
     func testViewWillAppearFailedAPIResponseShowError() {
+        
         let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
         let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
         

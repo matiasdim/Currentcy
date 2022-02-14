@@ -9,6 +9,8 @@
 /**************************** Generic ****************************/
 "generic.alert.error.title" = "Error";
 "generic.alert.button.ok.title" = "OK";
+"generic.error.message" = "Error, inténtelo de nuevo más tarde";
+"url.error.message" = "Error en la URL";
 /**************************** Rates List ****************************/
 "ratesList.title" = "Rates";
 "ratesList.searchBarTitle" = "Search rates";

@@ -54,7 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     /// Configure here the desired initial view controller
     private func makeRootController() -> UIViewController {
-        let apiManager = ApiManager(session: URLSession(configuration: .default))
+        let apiManager = ApiManager(session: URLSession(configuration: .default), errormanager: ErrorManager())
         
         let ratesAPI = RatesAPI(APIManager: apiManager) ///RatesAPIMock(APIManager: apiManager)
                                     

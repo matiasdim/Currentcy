@@ -7,10 +7,15 @@
 
 import UIKit
 
+struct ErrorManager {
+    var defaultError = DefaultError()
+    var urlError = URLError()
+}
+
 struct DefaultError: LocalizedError {
-    var errorDescription: String? = "Error, inténtelo de nuevo más tarde"
+    var errorDescription: String? = AppLocalization.GenericKeys.errorGenericMessage.localizedString
 }
 
 struct URLError: LocalizedError {
-    var errorDescription: String? = "Error en la URL"
+    var errorDescription: String? = AppLocalization.GenericKeys.urlErrorMessage.localizedString
 }

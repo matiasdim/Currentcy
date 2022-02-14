@@ -12,6 +12,10 @@ struct AppLocalization {
     enum GenericKeys: String {
         case errorAlertTitle = "generic.alert.error.title"
         
+        case errorGenericMessage = "generic.error.message"
+        
+        case urlErrorMessage = "url.error.message"
+        
         case OkAlertButton = "generic.alert.button.ok.title"
         
         var localizedString: String {

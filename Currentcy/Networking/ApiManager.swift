@@ -10,10 +10,11 @@ struct ApiManager: NetworkManager {
     
     let session: URLSession
     var urlBuilder: URLBuilder? = nil
+    var errormanager: ErrorManager
     
     func fetchAll(completion: @escaping (Result<Any, Error>) -> ()) {
         guard let url = urlBuilder?.url else {
-            completion(.failure(URLError()))
+            completion(.failure(errormanager.urlError))
             return
         }
         
@@ -24,7 +25,7 @@ struct ApiManager: NetworkManager {
             if let error = error {
                 completion(.failure(error))
             } else {
-                completion(.failure(DefaultError()))
+                completion(.failure(errormanager.defaultError))
             }
         }.resume()
         
