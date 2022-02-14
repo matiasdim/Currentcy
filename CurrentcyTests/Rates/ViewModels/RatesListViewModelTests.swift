@@ -35,7 +35,9 @@ class RatesListViewModelTests: XCTestCase {
     func testReloadTableCall() {
         let service = RatesServiceDummy()
         let viewModel = RateListViewModel(rates: [], service: service)
-        let vc = TestableRatesListController(viewModel: viewModel)
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let vc = TestableRatesListController(viewModel: viewModel, appTheming: appTheming, stylesSource: styles)
     
         XCTAssertFalse(vc.tableRelodCalled)
         vc.simulateDidLoad()
@@ -47,7 +49,9 @@ class RatesListViewModelTests: XCTestCase {
     func testShowErrorCall() {
         let service = RatesServiceDummy()
         let viewModel = RateListViewModel(rates: [], service: service)
-        let vc = TestableRatesListController(viewModel: viewModel)
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let vc = TestableRatesListController(viewModel: viewModel, appTheming: appTheming, stylesSource: styles)
         let errorManager = ErrorManager()
         
         XCTAssertFalse(vc.showErrorCalled)
@@ -69,7 +73,9 @@ class RatesListViewModelTests: XCTestCase {
     func testSetRatesReloadsTableData() {
         let service = RatesServiceDummy()
         let viewModel = RateListViewModel(rates: [], service: service)
-        let vc = TestableRatesListController(viewModel: viewModel)
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let vc = TestableRatesListController(viewModel: viewModel, appTheming: appTheming, stylesSource: styles)
         
         XCTAssertFalse(vc.tableRelodCalled)
         
@@ -83,6 +89,7 @@ class RatesListViewModelTests: XCTestCase {
 private class TestableRatesListController: RatesListController {
     var tableRelodCalled = false
     var showErrorCalled = false
+    
     
     override func viewDidLoad() {
         viewModel.reloadTable = { [weak self] in

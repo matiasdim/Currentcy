@@ -10,13 +10,17 @@ import UIKit
 class RatesListController: UITableViewController {
     
     var viewModel: RateListViewModel
+    var appTheming: AppTheming
+    var stylesSource: RatesStyle
     var searchController: UISearchController?
     var activityIndicator: UIActivityIndicatorView?
     
     let reuseIdentifier = "reuseIdentifier"
     
-    init(viewModel: RateListViewModel) {
+    init(viewModel: RateListViewModel, appTheming: AppTheming, stylesSource: RatesStyle) {
         self.viewModel = viewModel
+        self.appTheming = appTheming
+        self.stylesSource = stylesSource
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,6 +28,9 @@ class RatesListController: UITableViewController {
         
         activityIndicator = UIActivityIndicatorView(style: .large)
         title = AppLocalization.RatesListKeys.title.localizedString
+        
+        tableView.register(UINib(nibName: "RateTableViewCell", bundle: nil), forCellReuseIdentifier: RateTableViewCell.reuseIndentifier)
+        tableView.separatorStyle = .none
         
         searchController = UISearchController(searchResultsController: nil)
         searchController?.delegate = self
@@ -35,6 +42,7 @@ class RatesListController: UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
+        setStyle()
         setViewModelActions()
     }
     
@@ -54,12 +62,10 @@ class RatesListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        cell.accessoryType = .disclosureIndicator
         
-        let rateDetail = viewModel.rate(at: indexPath.row)
-        cell.textLabel?.text = rateDetail.code
-        cell.detailTextLabel?.text = "\(rateDetail.value)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: RateTableViewCell.reuseIndentifier, for: indexPath) as? RateTableViewCell ?? RateTableViewCell(style: .default, reuseIdentifier: RateTableViewCell.reuseIndentifier)
+        
+        cell.configure(viewModel: viewModel.rate(at: indexPath.row), appTheming: appTheming, styles: stylesSource)
         
         return cell
     }
@@ -68,9 +74,20 @@ class RatesListController: UITableViewController {
         show(viewModel.rate(at: indexPath.row))
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
     private func show(_ rateDetail: RateDetailViewModel) {
         let vc = RateDetailViewController(viewModel: rateDetail)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func setStyle() {
+        stylesSource.mainView(tableView)
+        stylesSource.searchController(searchController!)
+        guard let navigationController = navigationController else { return }
+        stylesSource.navigationStyle(navigationController)
     }
     
     private func setViewModelActions() {

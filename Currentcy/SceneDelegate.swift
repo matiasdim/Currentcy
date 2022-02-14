@@ -57,9 +57,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let apiManager = ApiManager(session: URLSession(configuration: .default), errormanager: ErrorManager())
         
         let ratesAPI = RatesAPI(APIManager: apiManager) ///RatesAPIMock(APIManager: apiManager)
-                                    
-        return RatesListController(viewModel: RateListViewModel(rates: [],
-                                                                service: RatesAPIRateListViewModelAdapter(api: ratesAPI)))
+                     
+        let viewModel = RateListViewModel(rates: [],
+                                          service: RatesAPIRateListViewModelAdapter(api: ratesAPI))
+        let appTheming = AppTheming()
+        let style = RatesStyle()
+        return RatesListController(viewModel: viewModel, appTheming: appTheming, stylesSource: style)
     }
 
 }

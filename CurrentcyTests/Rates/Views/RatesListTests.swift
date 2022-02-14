@@ -14,7 +14,9 @@ class RatesList: XCTestCase {
     
     func testViewTitleSetOnDidLoad() {
         let service = RatesServiceSpy()
-        let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.loadViewIfNeeded()
         XCTAssertEqual(AppLocalization.RatesListKeys.title.localizedString, sut.title)
@@ -23,7 +25,9 @@ class RatesList: XCTestCase {
     func testSetViewModelFunctionsOnLoad() {
         let service = RatesServiceSpy()
         let viewModel = RateListViewModel(rates: [], service: service)
-        let sut = RatesListController(viewModel: viewModel)
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: viewModel, appTheming: appTheming, stylesSource: styles)
         
         XCTAssertNil(sut.viewModel.reloadTable)
         XCTAssertNil(sut.viewModel.showError)
@@ -36,7 +40,9 @@ class RatesList: XCTestCase {
     
     func testViewDidLoadDoesNotLoadRatesFromAPI() {
         let service = RatesServiceSpy()
-        let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.loadViewIfNeeded()
                 
@@ -45,7 +51,9 @@ class RatesList: XCTestCase {
     
     func testViewWillAppearLoadRatesFromAPI() {
         let service = RatesServiceSpy()
-        let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.simulateWillAppear()
         
@@ -56,7 +64,9 @@ class RatesList: XCTestCase {
         let rate1 = Rate(code: "COP", value: 102)
         let rate2 = Rate(code: "USD", value: 2101.02)
         let service = RatesServiceSpy(result: .success([rate1 ,rate2]))
-        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate1, rate2], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate1, rate2], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.simulateWillAppear()
         
@@ -64,9 +74,10 @@ class RatesList: XCTestCase {
     }
     
     func testViewWillAppearFailedAPIResponseShowError() {
-        
         let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
-        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.simulateWillAppear()
         
@@ -77,7 +88,9 @@ class RatesList: XCTestCase {
         let rate1 = Rate(code: "BIH", value: 102)
         let rate2 = Rate(code: "BIF", value: 2101.02)
         let service = RatesServiceSpy(result: .success([rate1 ,rate2]))
-        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate1, rate2], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate1, rate2], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.simulateWillAppear()
         XCTAssertEqual(sut.rateCode(at: 0), rate2.code)
@@ -87,7 +100,9 @@ class RatesList: XCTestCase {
     func testRateSelectionShowRateDetails() {
         let rate = Rate(code: "USD", value: 2101.02)
         let service = RatesServiceSpy(result: .success([rate]))
-        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate], service: service), appTheming: appTheming, stylesSource: styles)
         let navigation = NonAnimatedUINavigationController(rootViewController: sut)
         
         sut.simulateWillAppear()
@@ -101,14 +116,18 @@ class RatesList: XCTestCase {
     func testNumbersOfRowsInSection() {
         let rate = Rate(code: "USD", value: 2101.02)
         let service = RatesServiceSpy(result: .success([rate]))
-        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate], service: service), appTheming: appTheming, stylesSource: styles)
         
         XCTAssertEqual(sut.numberOfRowsInSection(), 1)
     }
     
     func testSearchControlPlaceholderTitle() {
         let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
-        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.simulateWillAppear()
         
@@ -119,7 +138,9 @@ class RatesList: XCTestCase {
     
     func testSearchControllerIsPresented() {
         let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
-        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.simulateWillAppear()
                 
@@ -131,7 +152,9 @@ class RatesList: XCTestCase {
     
     func testSearchControlCallsDelegteWhenTextChanges() {
         let service = RatesServiceSpy(result: .failure(DefaultError(errorDescription: "an error")))
-        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         sut.simulateWillAppear()
         

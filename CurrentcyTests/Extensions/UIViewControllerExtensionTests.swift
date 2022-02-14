@@ -8,10 +8,13 @@
 import XCTest
 
 class UIViewControllerExtensionTests: XCTestCase {
-
+    
     func testShowErrorAlert() {
         let service = RatesServiceSpy()
-        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        
+        let sut = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         let errorDescription = AppLocalization.GenericKeys.errorGenericMessage.localizedString
         let errorManager = ErrorManager()
 
@@ -27,7 +30,9 @@ class UIViewControllerExtensionTests: XCTestCase {
     func testActivityIndicatorIsShown() {
         let sut = UIActivityIndicatorView(style: .large)
         let service = RatesServiceSpy()
-        let vc = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let vc = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         vc.simulateWillAppear()
         vc.show(activityIndicator: sut)
@@ -38,7 +43,9 @@ class UIViewControllerExtensionTests: XCTestCase {
     func testActivityIndicatorIsHidden() {
         let sut = UIActivityIndicatorView(style: .large)
         let service = RatesServiceSpy()
-        let vc = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service))
+        let appTheming = AppTheming()
+        let styles = RatesStyle()
+        let vc = TestableRatesListController(viewModel: RateListViewModel(rates: [], service: service), appTheming: appTheming, stylesSource: styles)
         
         vc.simulateWillAppear()
         vc.show(activityIndicator: sut)

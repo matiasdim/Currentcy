@@ -58,6 +58,9 @@
 		13B89C5F27BABAD800A5A28E /* RateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B89C5D27BABAD800A5A28E /* RateTableViewCell.xib */; };
 		13B89C6027BAC08600A5A28E /* RateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B89C5D27BABAD800A5A28E /* RateTableViewCell.xib */; };
 		13B89C6127BAC08A00A5A28E /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5C27BABAD800A5A28E /* RateTableViewCell.swift */; };
+		13B89C6227BAEBE500A5A28E /* AppTheming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13756F5627A0843000F30019 /* AppTheming.swift */; };
+		13B89C6527BAEEC000A5A28E /* RatesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C6427BAEEC000A5A28E /* RatesStyle.swift */; };
+		13B89C6627BAEFB900A5A28E /* RatesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C6427BAEEC000A5A28E /* RatesStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,7 @@
 		13B89C5927BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesAPIRateListViewModelAdapterTests.swift; sourceTree = "<group>"; };
 		13B89C5C27BABAD800A5A28E /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewCell.swift; sourceTree = "<group>"; };
 		13B89C5D27BABAD800A5A28E /* RateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateTableViewCell.xib; sourceTree = "<group>"; };
+		13B89C6427BAEEC000A5A28E /* RatesStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +298,7 @@
 		1363D38F279F3DC2002C73E4 /* Rates */ = {
 			isa = PBXGroup;
 			children = (
+				13B89C6327BAEE9400A5A28E /* Style */,
 				1363D356279F0593002C73E4 /* RatesListController.swift */,
 				1363D357279F0593002C73E4 /* RateDetailViewController.swift */,
 				13B89C5C27BABAD800A5A28E /* RateTableViewCell.swift */,
@@ -341,6 +346,14 @@
 				13B89C5927BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift */,
 			);
 			path = Adapters;
+			sourceTree = "<group>";
+		};
+		13B89C6327BAEE9400A5A28E /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				13B89C6427BAEEC000A5A28E /* RatesStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +475,7 @@
 				1363D368279F0593002C73E4 /* UIViewController+Extensions.swift in Sources */,
 				1363D361279F0593002C73E4 /* RatesListViewModel.swift in Sources */,
 				1363D362279F0593002C73E4 /* RatesListController.swift in Sources */,
+				13B89C6527BAEEC000A5A28E /* RatesStyle.swift in Sources */,
 				1363D36F279F05E1002C73E4 /* RatesService.swift in Sources */,
 				1317482F2799A28F00D98B75 /* SceneDelegate.swift in Sources */,
 				1363D363279F0593002C73E4 /* RateDetailViewController.swift in Sources */,
@@ -481,9 +495,11 @@
 				1363D377279F0629002C73E4 /* RatesListController.swift in Sources */,
 				13B89C5A27BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift in Sources */,
 				1363D385279F1E17002C73E4 /* URLBuilder.swift in Sources */,
+				13B89C6627BAEFB900A5A28E /* RatesStyle.swift in Sources */,
 				1363D388279F1E87002C73E4 /* URLBuilderTests.swift in Sources */,
 				1363D36B279F05BF002C73E4 /* RatesListViewModelTests.swift in Sources */,
 				13B89C5527BAA76300A5A28E /* RateTests.swift in Sources */,
+				13B89C6227BAEBE500A5A28E /* AppTheming.swift in Sources */,
 				1363D370279F05FA002C73E4 /* RatesService.swift in Sources */,
 				1363D36C279F05BF002C73E4 /* RatesListTests.swift in Sources */,
 				1363D38A279F386E002C73E4 /* RatesDetailViewModelTests.swift in Sources */,

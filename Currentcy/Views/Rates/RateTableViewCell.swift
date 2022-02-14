@@ -13,6 +13,7 @@ protocol RateTableViewCellDelegate: AnyObject {
 
 class RateTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var mainContainer: UIView!
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var labelValue: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -26,14 +27,19 @@ class RateTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    func configure(viewModel: RateDetailViewModel) {
+    func configure(viewModel: RateDetailViewModel, appTheming: AppTheming, styles: RatesStyle) {        
         codeLabel.text = viewModel.code
         labelValue.text = String(viewModel.value)
         
-        favoriteButton.setImage(UIImage(named: "star"), for: .normal)
+        /// Styles
+        styles.cellStyle(mainContainer)
+        styles.cellTitle(codeLabel)
+        styles.cellSubitle(labelValue)
+        styles.favoriteButton(favoriteButton)
     }
     
     @IBAction func favoriteButtonAction(_ sender: Any) {
+        favoriteButton.isSelected = !favoriteButton.isSelected
         delegate?.favoriteButtonPressed()
     }
 }
