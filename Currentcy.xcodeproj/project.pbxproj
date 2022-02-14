@@ -47,6 +47,13 @@
 		13756F5727A0843000F30019 /* AppTheming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13756F5627A0843000F30019 /* AppTheming.swift */; };
 		13A7412F27B1B19900625879 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A7412E27B1B19900625879 /* NetworkManager.swift */; };
 		13A7413027B1B2A100625879 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A7412E27B1B19900625879 /* NetworkManager.swift */; };
+		13B89C4E27BAA0C400A5A28E /* ErrorManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C4D27BAA0C400A5A28E /* ErrorManagerTests.swift */; };
+		13B89C5027BAA14700A5A28E /* RatesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C4F27BAA14700A5A28E /* RatesAPITests.swift */; };
+		13B89C5227BAA4AF00A5A28E /* ApiManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5127BAA4AF00A5A28E /* ApiManagerTests.swift */; };
+		13B89C5527BAA76300A5A28E /* RateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5427BAA76300A5A28E /* RateTests.swift */; };
+		13B89C5727BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5627BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift */; };
+		13B89C5A27BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5927BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift */; };
+		13B89C5B27BAA8AA00A5A28E /* RatesAPIRateListViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B89C5627BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +99,12 @@
 		13756F5327A06D6A00F30019 /* AppLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
 		13756F5627A0843000F30019 /* AppTheming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheming.swift; sourceTree = "<group>"; };
 		13A7412E27B1B19900625879 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		13B89C4D27BAA0C400A5A28E /* ErrorManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManagerTests.swift; sourceTree = "<group>"; };
+		13B89C4F27BAA14700A5A28E /* RatesAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesAPITests.swift; sourceTree = "<group>"; };
+		13B89C5127BAA4AF00A5A28E /* ApiManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerTests.swift; sourceTree = "<group>"; };
+		13B89C5427BAA76300A5A28E /* RateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTests.swift; sourceTree = "<group>"; };
+		13B89C5627BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesAPIRateListViewModelAdapter.swift; sourceTree = "<group>"; };
+		13B89C5927BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesAPIRateListViewModelAdapterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +166,8 @@
 		131748422799A29200D98B75 /* CurrentcyTests */ = {
 			isa = PBXGroup;
 			children = (
+				13B89C5327BAA74D00A5A28E /* Models */,
+				13B89C4C27BAA0A900A5A28E /* Utils */,
 				1363D386279F1E73002C73E4 /* Networking */,
 				1363D37D279F09A5002C73E4 /* UtilsForTests */,
 				1363D37A279F093C002C73E4 /* Extensions */,
@@ -226,6 +241,7 @@
 		1363D379279F0934002C73E4 /* Rates */ = {
 			isa = PBXGroup;
 			children = (
+				13B89C5827BAA84200A5A28E /* Adapters */,
 				13A7412D27B17D3B00625879 /* ViewModels */,
 				13A7412C27B17D3300625879 /* Views */,
 			);
@@ -253,6 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				1363D387279F1E87002C73E4 /* URLBuilderTests.swift */,
+				13B89C4F27BAA14700A5A28E /* RatesAPITests.swift */,
+				13B89C5127BAA4AF00A5A28E /* ApiManagerTests.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -262,6 +280,7 @@
 			children = (
 				1363D354279F0593002C73E4 /* RatesListViewModel.swift */,
 				1363D38B279F3D5F002C73E4 /* RatesDetailViewModel.swift */,
+				13B89C5627BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift */,
 			);
 			path = Rates;
 			sourceTree = "<group>";
@@ -290,6 +309,30 @@
 				1363D369279F05BF002C73E4 /* RatesListViewModelTests.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		13B89C4C27BAA0A900A5A28E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				13B89C4D27BAA0C400A5A28E /* ErrorManagerTests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		13B89C5327BAA74D00A5A28E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13B89C5427BAA76300A5A28E /* RateTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		13B89C5827BAA84200A5A28E /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				13B89C5927BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift */,
+			);
+			path = Adapters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +441,7 @@
 				1363D367279F0593002C73E4 /* ApiManager.swift in Sources */,
 				1363D366279F0593002C73E4 /* RatesServiceManager.swift in Sources */,
 				1363D384279F1567002C73E4 /* URLBuilder.swift in Sources */,
+				13B89C5727BAA81500A5A28E /* RatesAPIRateListViewModelAdapter.swift in Sources */,
 				13756F5427A06D6A00F30019 /* AppLocalization.swift in Sources */,
 				1317482D2799A28F00D98B75 /* AppDelegate.swift in Sources */,
 				1363D364279F0593002C73E4 /* ErrorManager.swift in Sources */,
@@ -417,14 +461,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13B89C5227BAA4AF00A5A28E /* ApiManagerTests.swift in Sources */,
 				1363D380279F09CD002C73E4 /* RatesServiceSpy.swift in Sources */,
 				1363D376279F0626002C73E4 /* RatesListViewModel.swift in Sources */,
 				1363D374279F0618002C73E4 /* ApiManager.swift in Sources */,
 				1363D373279F0610002C73E4 /* RatesServiceManager.swift in Sources */,
 				1363D377279F0629002C73E4 /* RatesListController.swift in Sources */,
+				13B89C5A27BAA85400A5A28E /* RatesAPIRateListViewModelAdapterTests.swift in Sources */,
 				1363D385279F1E17002C73E4 /* URLBuilder.swift in Sources */,
 				1363D388279F1E87002C73E4 /* URLBuilderTests.swift in Sources */,
 				1363D36B279F05BF002C73E4 /* RatesListViewModelTests.swift in Sources */,
+				13B89C5527BAA76300A5A28E /* RateTests.swift in Sources */,
 				1363D370279F05FA002C73E4 /* RatesService.swift in Sources */,
 				1363D36C279F05BF002C73E4 /* RatesListTests.swift in Sources */,
 				1363D38A279F386E002C73E4 /* RatesDetailViewModelTests.swift in Sources */,
@@ -433,10 +480,13 @@
 				1363D37C279F0962002C73E4 /* UIViewControllerExtensionTests.swift in Sources */,
 				1363D372279F0607002C73E4 /* UIViewController+Extensions.swift in Sources */,
 				1363D382279F09F5002C73E4 /* RatesServiceDummy.swift in Sources */,
+				13B89C5B27BAA8AA00A5A28E /* RatesAPIRateListViewModelAdapter.swift in Sources */,
 				1363D371279F0600002C73E4 /* ErrorManager.swift in Sources */,
 				1363D378279F062B002C73E4 /* RateDetailViewController.swift in Sources */,
+				13B89C5027BAA14700A5A28E /* RatesAPITests.swift in Sources */,
 				13756F5527A07FA400F30019 /* AppLocalization.swift in Sources */,
 				1363D38D279F3D73002C73E4 /* RatesDetailViewModel.swift in Sources */,
+				13B89C4E27BAA0C400A5A28E /* ErrorManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
