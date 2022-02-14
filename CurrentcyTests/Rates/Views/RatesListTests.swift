@@ -53,8 +53,8 @@ class RatesList: XCTestCase {
     }
 
     func testViewWillAppearSuccessfulAPIResponseShowRates() {
-        let rate1 = Rate(code: "USD", value: 2101.02)
-        let rate2 = Rate(code: "COP", value: 102)
+        let rate1 = Rate(code: "COP", value: 102)
+        let rate2 = Rate(code: "USD", value: 2101.02)
         let service = RatesServiceSpy(result: .success([rate1 ,rate2]))
         let sut = RatesListController(viewModel: RateListViewModel(rates: [rate1, rate2], service: service))
         
@@ -70,6 +70,17 @@ class RatesList: XCTestCase {
         sut.simulateWillAppear()
         
         XCTAssertEqual(sut.errorMessage(), "an error")
+    }
+    
+    func testRatesareALphabeticallyOrdred() {
+        let rate1 = Rate(code: "BIH", value: 102)
+        let rate2 = Rate(code: "BIF", value: 2101.02)
+        let service = RatesServiceSpy(result: .success([rate1 ,rate2]))
+        let sut = RatesListController(viewModel: RateListViewModel(rates: [rate1, rate2], service: service))
+        
+        sut.simulateWillAppear()
+        XCTAssertEqual(sut.rateCode(at: 0), rate2.code)
+        XCTAssertEqual(sut.rateCode(at: 1), rate1.code)
     }
      
     func testRateSelectionShowRateDetails() {
